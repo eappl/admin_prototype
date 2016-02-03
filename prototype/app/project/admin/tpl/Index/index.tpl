@@ -5,7 +5,7 @@
     	<div class="navbar navbar-fixed-top">
     		<div class="navbar-inner">
     			<div class="container-fluid">
-                    <a href="http://www.google.com/" target="_blank" class="brand">
+                    <a href="<?php $this->config->companyUrl(); ?>" target="_blank" class="brand">
                         <i class="icon-home icon-white">
                     </i> <?php $this->config->companyName(); ?> <span class="sml_t"><?php $this->config->currentVersion(); ?></span></a>
     				<ul class="nav" id="mobile-nav">
