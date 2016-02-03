@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>运营综合数据平台</title>
+        <title><?php $this->config->projectName(); ?></title>
     
         <!-- Bootstrap framework -->
             <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"  />

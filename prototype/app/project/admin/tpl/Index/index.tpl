@@ -48,12 +48,6 @@
                                     <!--span class="act act-success">10</span-->
                                     <h5><a href="javascript:;" onclick="repwd('<?php $this->manager->id(); ?>');" title="修改密码">修改密码</a></h5>
                                 </li>
-                                <?php if($this->manager->name == "陈晓东"): ?>                                
-                                <li>
-                                    <!--span class="act act-success">10</span-->
-                                    <h5><a href="/mysql/index.php" target="_blank" title="phpMyAdmin">phpMyAdmin</a></h5>
-                                </li>
-                                <?php endif; ?>                                                                
                                 <li>
                                     <!--span class="act act-danger">85</span-->
                                     <h5><button class="btn btn-info" onclick="location.href='<?php $this->manager->logoutUrl(); ?>'">安全退出</button></h5>
