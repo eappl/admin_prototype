@@ -23,6 +23,10 @@ $table['config_race_stage']['db'] = 'prototype_global';
 $table['config_race_stage']['num'] = 1;
 
 #管理员
+$table['config_race_stage_group']['db'] = 'prototype_global';
+$table['config_race_stage_group']['num'] = 1;
+
+#管理员
 $table['config_race_group']['db'] = 'prototype_global';
 $table['config_race_group']['num'] = 1;
 

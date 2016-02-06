@@ -12,6 +12,7 @@ class Xrace_Race extends Base_Widget
 	protected $table_type = 'config_race_type';
 	protected $table_group = 'config_race_group';
 	protected $table_stage = 'config_race_stage';
+	protected $table_stage_group = 'config_race_stage_group';
 	protected $maxRaceDetail = 5;
 
 	protected $raceTimingType = array('chip'=>'芯片计时','gps'=>'gps定位');
@@ -303,5 +304,18 @@ class Xrace_Race extends Base_Widget
 		$RaceTypeId = intval($RaceTypeId);
 		$table_to_process = Base_Widget::getDbTable($this->table_type);
 		return $this->db->delete($table_to_process, '`RaceTypeId` = ?', $RaceTypeId);
+	}
+	/**
+	 * 获取单条记录
+	 * @param integer $AppId
+	 * @param string $fields
+	 * @return array
+	 */
+	public function getRaceStageGroup($RaceStageId,$RaceGroupId,$fields = '*')
+	{
+		$RaceStageId = intval($RaceStageId);
+		$RaceGroupId = intval($RaceGroupId);
+		$table_to_process = Base_Widget::getDbTable($this->table_stage_group);
+		return $this->db->selectRow($table_to_process, $fields, '`RaceStageId` = ? and `RaceGroupId` = ?', array($RaceStageId,$RaceGroupId));
 	}
 }

@@ -67,7 +67,7 @@ class Xrace_RaceStageController extends AbstractController
 						{
 							if(isset($RaceGroupArr[$v]))
 							{
-								$t[$k] = $RaceGroupArr[$v]['RaceGroupName'];
+								$t[$k] = "<a href='".$this->sign."&ac=race.stage.group.list&RaceStageId=".$key."&RaceGroupId=".$v."'>".$RaceGroupArr[$v]['RaceGroupName']."</a>";
 							}
 						}
 					}
@@ -160,7 +160,7 @@ class Xrace_RaceStageController extends AbstractController
 		$PermissionCheck = $this->manager->checkMenuPermission("RaceStageModify");
 		if($PermissionCheck['return'])
 		{
-			$RaceStageId = trim($this->request->RaceStageId);
+			$RaceStageId = intval($this->request->RaceStageId);
 			$RaceCatalogArr  = $this->oRaceStage->getAllRaceCatalogList();
 			$oRaceStage = $this->oRaceStage->getRaceStage($RaceStageId,'*');
 			$RaceGroupArr = $this->oRaceStage->getAllRaceGroupList($oRaceStage['RaceCatalogId'],'RaceGroupId,RaceGroupName');
@@ -218,33 +218,39 @@ class Xrace_RaceStageController extends AbstractController
 		return true;
 	}
 	//更新任务信息
-	public function raceDetailListAction()
+	public function raceStageGroupListAction()
 	{
 		//检查权限
-		$PermissionCheck = $this->manager->checkMenuPermission("RaceStageDelete");
+		$PermissionCheck = $this->manager->checkMenuPermission("RaceStageModify");
 		$PermissionCheck['return'] = "1";
 		if($PermissionCheck['return'])
 		{
-			$menuArr = array('aRaceDetailName'=>'赛段详情名称','RaceDatailLenthList'=>"分段计时点长度",'Price'=>'报名价格','MaxPeople'=>"最大人数限制",'MinPeople'=>"最小人数限制");
-			krsort($menuArr);
-			$MaxRaceDetail = $this->oRaceStage->getMaxRaceDetail()+1;
+			//http://admin.xrace.com/?ctl=xrace/race.stage&ac=race.stage.group&RaceStageId=1&RaceGroupId=3
 			$RaceStageId = intval($this->request->RaceStageId);
+			//获取当前分站信息
 			$oRaceStage = $this->oRaceStage->getRaceStage($RaceStageId,'*');
+			//解包压缩数组
 			$oRaceStage['comment'] = json_decode($oRaceStage['comment'],true);
-			$RaceGroupArr = $this->oRaceStage->getAllRaceGroupList($oRaceStage['RaceCatalogId'],'RaceGroupId,RaceGroupName');
-			foreach($oRaceStage['comment']['SelectedRaceGroup'] as $key => $value)
+			//如果已选分组的数据不存在，用默认空数组替代
+			$oRaceStage['comment']['SelectedRaceGroup'] = isset($oRaceStage['comment']['SelectedRaceGroup'])?$oRaceStage['comment']['SelectedRaceGroup']:array();
+			foreach($oRaceStage['comment']['SelectedRaceGroup'] as $RaceGroupId => $RaceGroupInfo)
 			{
-				$oRaceStage['comment']['SelectedGroupDetail'][$value]['RaceGroupName'] = $RaceGroupArr[$value]['RaceGroupName'];
-				for($i=1;$i<$MaxRaceDetail;$i++)
+				//获取赛事分组信息
+				$RaceGroupInfo = $oRaceGroup = $this->oRaceStage->getRaceGroup($RaceGroupId,'*');
+				//如果获取到
+				if($RaceGroupInfo['RaceGroupId'])
 				{
-					if(!isset($oRaceStage['comment']['SelectedGroupDetail'][$value]['DetailList'][$i]))
-					{
-						$oRaceStage['comment']['SelectedGroupDetail'][$value]['DetailList'][$i] = array('aRaceDetailName'=>'','RaceDatailLenthList'=>"",'Price'=>'','MaxPeople'=>1,'MinPeople'=>1);
-					}
-					krsort($oRaceStage['comment']['SelectedGroupDetail'][$value]['DetailList'][$i]);
+					$oRaceStage['comment']['SelectedRaceGroup'][$RaceGroupId] = array('RaceGroupInfo' => $RaceGroupInfo, 'RaceStageGroupInfo' => array());
+					$RaceStageGroupInfo = $this->oRaceStage->getRaceStageGroup($RaceStageId,$RaceGroupId);
+					$oRaceStage['comment']['SelectedRaceGroup'][$RaceGroupId]['RaceStageGroupInfo'] = isset($RaceStageGroupInfo['RaceStageId'])?$RaceStageGroupInfo:array('PriceList'=>0,'SingleUser'=>1,'TeamUser'=>1);
+				}
+				else
+				{
+					//删除当前分组
+					unset($oRaceStage['comment']['SelectedRaceGroup'][$RaceGroupId]);
 				}
 			}
-			include $this->tpl('Xrace_Race_RaceDetailList');
+			include $this->tpl('Xrace_Race_RaceStageGroup');
 
 		}
 		else
