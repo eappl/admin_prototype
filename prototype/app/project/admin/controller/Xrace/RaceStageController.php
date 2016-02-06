@@ -67,7 +67,7 @@ class Xrace_RaceStageController extends AbstractController
 						{
 							if(isset($RaceGroupArr[$v]))
 							{
-								$t[$k] = "<a href='".$this->sign."&ac=race.stage.group.list&RaceStageId=".$key."&RaceGroupId=".$v."'>".$RaceGroupArr[$v]['RaceGroupName']."</a>";
+								$t[$k] = "<a href='".Base_Common::getUrl('','xrace/race.stage','race.stage.group.list',array('RaceStageId'=>$key)) ."'>".$RaceGroupArr[$v]['RaceGroupName']."</a>";
 							}
 						}
 					}
@@ -80,7 +80,7 @@ class Xrace_RaceStageController extends AbstractController
 					}
 					else
 					{
-						$RaceStageList[$value['RaceCatalogId']]['RaceStageList'][$key]['SelectedGroupList'] = "尚未配置";
+						$RaceStageList[$value['RaceCatalogId']]['RaceStageList'][$key]['SelectedGroupList'] = "<a href='".Base_Common::getUrl('','xrace/race.stage','race.stage.group.list',array('RaceStageId'=>$key)) ."'>尚未配置</a>";
 						$RaceStageList[$value['RaceCatalogId']]['RaceStageList'][$key]['RaceDetail'] = 0;
 						$RaceStageList[$value['RaceCatalogId']]['RaceStageList'][$key]['GroupCount'] = 0;
 						$RaceStageList[$value['RaceCatalogId']]['RaceStageList'][$key]['RowCount'] = 1;
@@ -215,7 +215,6 @@ class Xrace_RaceStageController extends AbstractController
 			{
 				if(!isset($bind['comment']['SelectedRaceGroup'][$GroupInfo['RaceGroupId']]))
 				{
-					//echo "to_delete:".$GroupInfo['RaceStageId']."-".$GroupInfo['RaceGroupId']."<br>";
 					$this->oRaceStage->deleteRaceStageGroup($GroupInfo['RaceStageId'],$GroupInfo['RaceGroupId']);
 				}
 			}
@@ -251,7 +250,9 @@ class Xrace_RaceStageController extends AbstractController
 				{
 					$oRaceStage['comment']['SelectedRaceGroup'][$RaceGroupId] = array('RaceGroupInfo' => $RaceGroupInfo, 'RaceStageGroupInfo' => array());
 					$RaceStageGroupInfo = $this->oRaceStage->getRaceStageGroup($RaceStageId,$RaceGroupId);
-					$oRaceStage['comment']['SelectedRaceGroup'][$RaceGroupId]['RaceStageGroupInfo'] = isset($RaceStageGroupInfo['RaceStageId'])?$RaceStageGroupInfo:array('PriceList'=>0,'SingleUser'=>1,'TeamUser'=>1);
+					$StartTime = date("Y-m-d H:i:s",time()+86400);
+					$EndTime = date("Y-m-d H:i:s",time()+86400*2);
+					$oRaceStage['comment']['SelectedRaceGroup'][$RaceGroupId]['RaceStageGroupInfo'] = isset($RaceStageGroupInfo['RaceStageId'])?$RaceStageGroupInfo:array('PriceList'=>0,'SingleUser'=>1,'TeamUser'=>1,'StartTime'=>$StartTime,'EndTime'=>$EndTime);
 				}
 				else
 				{
