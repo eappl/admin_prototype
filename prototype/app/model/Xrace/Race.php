@@ -318,4 +318,53 @@ class Xrace_Race extends Base_Widget
 		$table_to_process = Base_Widget::getDbTable($this->table_stage_group);
 		return $this->db->selectRow($table_to_process, $fields, '`RaceStageId` = ? and `RaceGroupId` = ?', array($RaceStageId,$RaceGroupId));
 	}
+	/**
+	 * 更新
+	 * @param integer $AppId
+	 * @param array $bind
+	 * @return boolean
+	 */
+	public function updateRaceStageGroup($RaceStageId,$RaceGroupId,array $bind)
+	{
+		$RaceStageId = intval($RaceStageId);
+		$RaceGroupId = intval($RaceGroupId);
+		$table_to_process = Base_Widget::getDbTable($this->table_stage_group);
+		return $this->db->update($table_to_process, $bind, '`RaceStageId` = ? and `RaceGroupId` = ?', array($RaceStageId,$RaceGroupId));
+	}
+	/**
+	 * 插入
+	 * @param array $bind
+	 * @return boolean
+	 */
+	public function insertRaceStageGroup(array $bind)
+	{
+		$table_to_process = Base_Widget::getDbTable($this->table_stage_group);
+		return $this->db->insert($table_to_process, $bind);
+	}
+	/**
+	 * 获取单条记录
+	 * @param integer $AppId
+	 * @param string $fields
+	 * @return array
+	 */
+	public function getRaceStageGroupByStage($RaceStageId,$fields = '*')
+	{
+		$RaceStageId = intval($RaceStageId);
+		$table_to_process = Base_Widget::getDbTable($this->table_stage_group);
+		return $this->db->select($table_to_process, $fields, '`RaceStageId` = ?', $RaceStageId);
+	}
+	/**
+	 * 获取单条记录
+	 * @param integer $AppId
+	 * @param string $fields
+	 * @return array
+	 */
+	public function deleteRaceStageGroup($RaceStageId,$RaceGroupId)
+	{
+		$RaceStageId = intval($RaceStageId);
+		$RaceGroupId = intval($RaceGroupId);
+		$table_to_process = Base_Widget::getDbTable($this->table_stage_group);
+		return $this->db->delete($table_to_process, '`RaceStageId` = ? and `RaceGroupId` = ?', array($RaceStageId,$RaceGroupId));
+	}
+
 }
