@@ -5,7 +5,7 @@
  * $Id: MenuController.php 15240 2014-08-04 09:48:26Z 334746 $
  */
 
-class MenuController extends AbstractController
+class MenuController extends AbstractController 
 {
 	protected $sign = '?ctl=menu';
 
@@ -46,13 +46,13 @@ class MenuController extends AbstractController
                 $rescurTree = $this->getChildMenu($val['menu_id']);
                 if(count($rescurTree)){
                     $ChildMenu[$key]['tree'] = $rescurTree;
-					$ChildMenu[$key]['Child'] = 1;
-					$ChildMenu[$key]['permission_list'] = "双击打开下级菜单";
+                    $ChildMenu[$key]['Child'] = 1;
+                    $ChildMenu[$key]['permission_list'] = "双击打开下级菜单";
                 }
-				else
-				{
-					$ChildMenu[$key]['Child'] = 0;
-				}
+                else
+                {
+                        $ChildMenu[$key]['Child'] = 0;
+                }
             }            
         }
         
@@ -114,15 +114,15 @@ class MenuController extends AbstractController
 
                 //检查菜单名
                 if (empty($name)) {
-                        $response = array('errno' => 1);
-                        echo json_encode($response);
-                        return false;
+                    $response = array('errno' => 1);
+                    echo json_encode($response);
+                    return false;
                 }
                 //检查菜单名是否已经存在
                 if ($Menu->getByName($name)) {
-                        $response = array('errno' => 2);
-                        echo json_encode($response);
-                        return false;
+                    $response = array('errno' => 2);
+                    echo json_encode($response);
+                    return false;
                 }
 
                 $bind['name'] = $name;
@@ -133,23 +133,23 @@ class MenuController extends AbstractController
                 $menu_id = $Menu->insert($bind);
                 if(!$menu_id)
                 {
-                        $response = array('errno' => 9);
-                        echo json_encode($response);
-                        return false;
+                    $response = array('errno' => 9);
+                    echo json_encode($response);
+                    return false;
                 }
 
-                    //更新权限
-                    $MenuPermission = new Widget_Menu_Permission();
-                    $bind = array();
-                    $bind['menu_id'] = $menu_id;
-                    $bind['group_id'] = $this->manager->menu_group_id;
-                    $bind['purview'] = bindec(1111);
-                    $res=$MenuPermission->insert($bind);
-                    if(!$res)
-                            $response = array('errno' => 4);
+                //更新权限
+                $MenuPermission = new Widget_Menu_Permission();
+                $bind = array();
+                $bind['menu_id'] = $menu_id;
+                $bind['group_id'] = $this->manager->menu_group_id;
+                $bind['purview'] = bindec(1111);
+                $res=$MenuPermission->insert($bind);
+                if(!$res)
+                $response = array('errno' => 4);
 
-                    $response = array('errno' => 0);
-                    echo json_encode($response);                
+                $response = array('errno' => 0);
+                echo json_encode($response);                
             }
             else {
                 $home = $this->sign;
@@ -366,18 +366,17 @@ class MenuController extends AbstractController
 
                 if($menuCount){
                     foreach($childmenu as $key=>$arr){
-
                         $Child = $Menu->getChildMenu($arr['menu_id']);
-                                            if(count($Child)>0)
-                                            {
-                                                    $arr['permission_list'] = "双击打开下级菜单";
-                                                    $arr['update_permission'] = '';
-                                            }
-                                            else
-                                            {
-                                                    $arr['update_permission'] = '| <a href="?ctl=menu/permission&ac=modify.by.menu&menu_id='.$arr['menu_id'].'">权限</a>';						
-                                            }
-                                            $return['tr'] .= '<tr class="hover" id="'.$arr['menu_id'].'" level="'.$level.'" ondblclick="getChildMenu(this.id,'.($level+1).')" style="cursor: pointer;">';
+                        if(count($Child)>0)
+                        {
+                            $arr['permission_list'] = "双击打开下级菜单";
+                            $arr['update_permission'] = '';
+                        }
+                        else
+                        {
+                            $arr['update_permission'] = '| <a href="?ctl=menu/permission&ac=modify.by.menu&menu_id='.$arr['menu_id'].'">权限</a>';						
+                        }
+                        $return['tr'] .= '<tr class="hover" id="'.$arr['menu_id'].'" level="'.$level.'" ondblclick="getChildMenu(this.id,'.($level+1).')" style="cursor: pointer;">';
                         $return['tr'] .= '<td width="100"><input type="text" name="sort['.$arr['menu_id'].']" value="'.$arr['sort'].'" size="3"/></td>
                                           <td width="100">'.$arr['menu_id'].'</td>
                                           <td style="text-align:left" width="500">'.$pfix.$arr['name'].'</td>
@@ -394,45 +393,45 @@ class MenuController extends AbstractController
 
                 $return['tr'] .= '</table></td></tr>';
             }else{
-                            $menu = $Menu->get($menu_id);
-                            $return = array("count"=>$menuCount,"select"=>'<select id="parent_'.$level.'" level="'.$level.'" onchange="getChildMenu(this.id,'.($level+1).');" name="parent_'.$level.'">');
+                $menu = $Menu->get($menu_id);
+                $return = array("count"=>$menuCount,"select"=>'<select id="parent_'.$level.'" level="'.$level.'" onchange="getChildMenu(this.id,'.($level+1).');" name="parent_'.$level.'">');
                 if($menu['parent'] == $partnerId)
-                            {
-                                    $return['select'].= '<option value="0" selected="selected">无</option>';				
+                {
+                    $return['select'].= '<option value="0" selected="selected">无</option>';				
 
-                                    if($menuCount)
+                    if($menuCount)
+                    {
+                            foreach($childmenu as $key=>$arr)
+                            {				
+                                    if($arr['menu_id']!=$menu_id)
                                     {
-                                            foreach($childmenu as $key=>$arr)
-                                            {				
-                                                    if($arr['menu_id']!=$menu_id)
-                                                    {
-                                                            $return['select'] .= '<option value="'.$arr['menu_id'].'">'.$arr['name'].'</option>';	
-                                                    }						
-                                            }
-                                    }
+                                            $return['select'] .= '<option value="'.$arr['menu_id'].'">'.$arr['name'].'</option>';	
+                                    }						
                             }
-                            else
-                            {
-                                    $return['select'].= '<option value="0">无</option>';
-                                    if($menuCount)
+                    }
+                }
+                else
+                {
+                    $return['select'].= '<option value="0">无</option>';
+                    if($menuCount)
+                    {
+                            foreach($childmenu as $key=>$arr)
+                            {				
+                                    if($arr['menu_id']!=$menu_id)
                                     {
-                                            foreach($childmenu as $key=>$arr)
-                                            {				
-                                                    if($arr['menu_id']!=$menu_id)
-                                                    {
-                                                            if($arr['menu_id']==$menu['parent'])
-                                                            {
-                                                                    $return['select'] .= '<option value="'.$arr['menu_id'].'" selected>'.$arr['name'].'</option>';
-                                                            }
-                                                            else
-                                                            {
-                                                                    $return['select'] .= '<option value="'.$arr['menu_id'].'">'.$arr['name'].'</option>';
-                                                            }
-                                                    }
-
+                                            if($arr['menu_id']==$menu['parent'])
+                                            {
+                                                    $return['select'] .= '<option value="'.$arr['menu_id'].'" selected>'.$arr['name'].'</option>';
+                                            }
+                                            else
+                                            {
+                                                    $return['select'] .= '<option value="'.$arr['menu_id'].'">'.$arr['name'].'</option>';
                                             }
                                     }
-                            }            
+
+                            }
+                    }
+                }            
                 $return['select'] .= '</select>';            
                 $return['myid'] = "parent_$level";
             }

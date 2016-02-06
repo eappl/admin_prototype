@@ -7,7 +7,7 @@
  * $Id: ManagerController.php 15195 2014-07-23 07:18:26Z 334746 $
  */
 
-class ManagerController extends AbstractController
+class ManagerController extends AbstractController 
 {
 	/**
 	 * 权限特征

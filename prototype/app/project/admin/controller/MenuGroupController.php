@@ -4,7 +4,7 @@
  * @author <cxd032404@hotmail.com>
  * $Id: MenuGroupController.php 15233 2014-08-04 06:46:08Z 334746 $
  */
-class MenuGroupController extends AbstractController
+class MenuGroupController extends AbstractController 
 {
 	protected $sign = "?ctl=menu.group";
 	

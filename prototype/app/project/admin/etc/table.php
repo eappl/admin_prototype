@@ -5,6 +5,9 @@
  */
 
 $table = array();
+#管理员
+$table['user_profile']['db'] = 'prototype_global';
+$table['user_profile']['num'] = 1;
 
 #管理员
 $table['config_sports_type']['db'] = 'prototype_global';

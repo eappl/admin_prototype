@@ -4,7 +4,7 @@
  * @author <cxd032404@hotmail.com>
  * $Id: DataGroupController.php 15233 2014-08-04 06:46:08Z 334746 $
  */
-class DataGroupController extends AbstractController
+class DataGroupController extends AbstractController 
 {
 	protected $sign = "?ctl=data.group";
 	
@@ -50,14 +50,14 @@ class DataGroupController extends AbstractController
                 $oGroup = new Widget_Group();
                 if(empty($data['name']))
                 {
-                        echo json_encode(array('errno' => 1));
-                        return false;
+                    echo json_encode(array('errno' => 1));
+                    return false;
                 }
                 $res = $oGroup->insert($data);
                 if (!$res)
                 {
-                        echo json_encode(array('errno' => 9));
-                        return false;
+                    echo json_encode(array('errno' => 9));
+                    return false;
                 }
 
                 echo  json_encode(array('errno' => 0));
@@ -97,22 +97,22 @@ class DataGroupController extends AbstractController
                 $group_id = $this->request->group_id;
                 if(!intVal($group_id))
                 {
-                        echo json_encode(array('errno' => 1));
-                        return false;
+                    echo json_encode(array('errno' => 1));
+                    return false;
                 }
 
                 if(empty($data['name']))
                 {
-                        echo json_encode(array('errno' => 2));
-                        return false;
+                    echo json_encode(array('errno' => 2));
+                    return false;
                 }
 
                 $oGroup = new Widget_Group();
                 $res = $oGroup->update($group_id, $data);
                 if (!$res)
                 {
-                        echo json_encode(array('errno' => 9));
-                        return false;
+                    echo json_encode(array('errno' => 9));
+                    return false;
                 }
 
                 echo  json_encode(array('errno' => 0));
@@ -135,8 +135,8 @@ class DataGroupController extends AbstractController
                 $res = $oGroup->delete($group_id);
                 if ($res)
                 {
-                        $Widget_Menu_Permission = new Widget_Menu_Permission();
-                        $Widget_Menu_Permission->deleteByGroup($group_id);
+                    $Widget_Menu_Permission = new Widget_Menu_Permission();
+                    $Widget_Menu_Permission->deleteByGroup($group_id);
                 }
                 $this->response->goBack();                
             }  
