@@ -26,7 +26,7 @@ class Xrace_RaceTypeController extends AbstractController
 	public function init()
 	{
 		parent::init();
-		$this->oRaceType = new Xrace_Race();
+		$this->oRace = new Xrace_Race();
 
 	}
 	//任务配置列表页面
@@ -36,7 +36,7 @@ class Xrace_RaceTypeController extends AbstractController
 		$PermissionCheck = $this->manager->checkMenuPermission(0);
 		if($PermissionCheck['return'])
 		{
-			$RaceTypeArr  = $this->oRaceType->getAllRaceTypeList();
+			$RaceTypeArr  = $this->oRace->getAllRaceTypeList();
 			include $this->tpl('Xrace_Race_RaceTypeList');
 		}
 		else
@@ -72,7 +72,7 @@ class Xrace_RaceTypeController extends AbstractController
 		}
 		else
 		{
-			$res = $this->oRaceType->insertRaceType($bind);
+			$res = $this->oRace->insertRaceType($bind);
 			$response = $res ? array('errno' => 0) : array('errno' => 9);
 		}
 		echo json_encode($response);
@@ -87,7 +87,7 @@ class Xrace_RaceTypeController extends AbstractController
 		if($PermissionCheck['return'])
 		{
 			$RaceTypeId = trim($this->request->RaceTypeId);
-			$oRaceType = $this->oRaceType->getRaceType($RaceTypeId,'*');
+			$oRaceType = $this->oRace->getRaceType($RaceTypeId,'*');
 			include $this->tpl('Xrace_Race_RaceTypeModify');
 		}
 		else
@@ -112,7 +112,7 @@ class Xrace_RaceTypeController extends AbstractController
 		else
 		{
 			//获取原有数据
-			$oRaceType = $this->oRaceType->getRaceType($bind['RaceTypeId'],'*');
+			$oRaceType = $this->oRace->getRaceType($bind['RaceTypeId'],'*');
 			$bind['comment'] = json_decode($oRaceType['comment'],true);
 			//文件上传
 			$oUpload = new Base_Upload('RaceTypeIcon');
@@ -126,7 +126,7 @@ class Xrace_RaceTypeController extends AbstractController
 				$bind['comment']['RaceTypeIcon_root'] = $path['path_root'];
 			}
 			$bind['comment'] = json_encode($bind['comment']);
-			$res = $this->oRaceType->updateRaceType($bind['RaceTypeId'],$bind);
+			$res = $this->oRace->updateRaceType($bind['RaceTypeId'],$bind);
 			$response = $res ? array('errno' => 0) : array('errno' => 9);
 		}
 		echo json_encode($response);
@@ -141,7 +141,7 @@ class Xrace_RaceTypeController extends AbstractController
 		if($PermissionCheck['return'])
 		{
 			$RaceTypeId = intval($this->request->RaceTypeId);
-			$this->oRaceType->deleteRaceType($RaceTypeId);
+			$this->oRace->deleteRaceType($RaceTypeId);
 			$this->response->goBack();
 		}
 		else
