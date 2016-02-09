@@ -420,7 +420,7 @@ class Xrace_RaceStageController extends AbstractController
 			$RaceGroupId = intval($this->request->RaceGroupId);
 			$SportsTypeId = intval($this->request->SportsTypeId);
 			$After = isset($this->request->After)?intval($this->request->After):0;
-
+			echo "After:".$After;
 			//获取当前分站信息
 			$oRaceStage = $this->oRace->getRaceStage($RaceStageId,'*');
 			//解包压缩数组
@@ -460,37 +460,31 @@ class Xrace_RaceStageController extends AbstractController
 			}
 			$RaceStageGroupInfo['comment'] = json_decode($RaceStageGroupInfo['comment'],true);
 			$RaceStageGroupInfo['comment']['DetailList'] = isset($RaceStageGroupInfo['comment']['DetailList'])?$RaceStageGroupInfo['comment']['DetailList']:array();
-			$i = 0;ksort($RaceStageGroupInfo['comment']['DetailList']);$flag = 1;$t = array();
-			foreach($RaceStageGroupInfo['comment']['DetailList'] as $k => $v)
+			ksort($RaceStageGroupInfo['comment']['DetailList']);
+			//如果添加在某个元素之后 且 元素下标不越界
+			if($After>=0 && $After < count(count($RaceStageGroupInfo['comment']['DetailList'])))
 			{
-				if($After >0 && $After == $i)
-				{
-					$t[$i] = array('SportsTypeId' => $SportsTypeId);
-					$flag = 0;
-					$i++;
-				}
-				else
-				{
-					$t[$i] = $v;
-					$i++;
-				}
+				//添加元素
+				$RaceStageGroupInfo['comment']['DetailList'] = Base_Common::array_insert($RaceStageGroupInfo['comment']['DetailList'],array('SportsTypeId' => $SportsTypeId),$After+1);
 			}
-			if($flag)
+			else
 			{
-				$t[$i] = array('SportsTypeId' => $SportsTypeId);
+				//默认为在表尾部添加元素
+				$RaceStageGroupInfo['comment']['DetailList'][count($RaceStageGroupInfo['comment']['DetailList'])] = array('SportsTypeId' => $SportsTypeId);
 			}
-			$RaceStageGroupInfo['comment']['DetailList'] = $t;
+			//生成修改后的元素列表
 			$RaceStageGroupInfo['RaceStageId'] = $RaceStageId;
 			$RaceStageGroupInfo['RaceGroupId'] = $RaceGroupId;
 			$RaceStageGroupInfo['comment'] = json_encode($RaceStageGroupInfo['comment']);
-			//print_R($RaceStageGroupInfo);
-			//die();
+			//如果认为需要新建数据
 			if(isset($NewDetail))
 			{
+				//插入新的数据
 				$res = $this->oRace->insertRaceStageGroup($RaceStageGroupInfo);
 			}
 			else
 			{
+				//更新数据
 				$res = $this->oRace->updateRaceStageGroup($RaceStageId,$RaceGroupId,$RaceStageGroupInfo);
 			}
 			$url = Base_Common::getUrl('','xrace/race.stage','race.stage.group.detail',array('RaceStageId'=>$RaceStageId,'RaceGroupId'=>$RaceGroupId));

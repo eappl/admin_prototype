@@ -4,8 +4,8 @@
     RaceStageId=$("#RaceStageId");
     RaceGroupId=$("#RaceGroupId");
     SportsType=$("#SportsTypeSelect");
-    After = 0;
-      location.href = '{tpl:$this.sign/}&ac=race.stage.group.sports.type.add&RaceGroupId=' + RaceGroupId.val() + '&RaceStageId=' + RaceStageId.val() + '&SportsTypeId=' + SportsType.val();
+    After=$("#After");
+      location.href = '{tpl:$this.sign/}&ac=race.stage.group.sports.type.add&RaceGroupId=' + RaceGroupId.val() + '&RaceStageId=' + RaceStageId.val() + '&SportsTypeId=' + SportsType.val() + '&After=' + After.val();
 
   }
 </script>
@@ -46,18 +46,25 @@
   </tr>
   {/tpl:loop}
   <tr>
-    <th align="center" class="rowtip">继续添加
+    <th align="center" class="rowtip">继续在
+      <select name="After" id="After" size="1">
+        <option value="-1" >尾部</option>
+        {tpl:loop $RaceStageGroupInfo.comment.DetailList $STypeId $STypeInfo}
+        <option value="{tpl:$STypeId/}" >{tpl:$STypeInfo.SportsTypeName/} 之后</option>
+        {/tpl:loop}
+      </select>
+      <button type="button" onclick="SportsTypeAdd()">添加</button>
       <select name="SportsTypeSelect" id="SportsTypeSelect" size="1">
         {tpl:loop $SportTypeArr  $SportsType}
         <option value="{tpl:$SportsType.SportsTypeId/}" >{tpl:$SportsType.SportsTypeName/}</option>
         {/tpl:loop}
       </select>
-      <button type="button" onclick="SportsTypeAdd()">添加</button>
     </th>
   </tr>
   {tpl:else}
   <tr>
     <th align="center" class="rowtip" colspan="4">尚未配置任何赛段计时点数据
+      <input type="hidden" name="After" id="After" value="-1" />
       <select name="SportsTypeSelect" id="SportsTypeSelect" size="1">
       {tpl:loop $SportTypeArr  $SportsType}
       <option value="{tpl:$SportsType.SportsTypeId/}" >{tpl:$SportsType.SportsTypeName/}</option>
