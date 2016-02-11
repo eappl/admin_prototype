@@ -2,16 +2,16 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#add_app').click(function(){
-		addAppBox = divBox.showBox('{tpl:$this.sign/}&ac=user.list.add', {title:'添加用户',width:500,height:200});
+		addAppBox = divBox.showBox('{tpl:$this.sign/}&ac=user.list.add', {title:'添加用户',width:500,height:400});
 	});
 });
 
-function UserDelete(){
-	deleteAppBox = divBox.confirmBox({content:'是否删除 ' + p_name + '?',ok:function(){location.href = '{tpl:$this.sign/}&ac=user.list.delete';}});
+function UserDelete(user_id,nick_name){
+	deleteAppBox = divBox.confirmBox({content:'是否删除 ' + nick_name + '?',ok:function(){location.href = '{tpl:$this.sign/}&ac=user.list.delete&user_id='+user_id;}});
 }
 
-function UserModify(){
-	modifyRaceTypeBox = divBox.showBox('{tpl:$this.sign/}&ac=user.list.modify' + mid, {title:'修改用户',width:500,height:200});
+function UserModify(user_id,nick_name){
+	modifyRaceTypeBox = divBox.showBox('{tpl:$this.sign/}&ac=user.list.modify&user_id=' + user_id, {title:'修改用户',width:500,height:400});
 }
 
 </script>
@@ -40,19 +40,23 @@ function UserModify(){
 <table width="99%" align="center" class="table table-bordered table-striped">
   <tr>
     <th align="center" class="rowtip">用户分类ID</th>
+    <th align="center" class="rowtip">用户昵称</th>    
     <th align="center" class="rowtip">性别</th>
     <th align="center" class="rowtip">认证状态</th>
+    <th align="center" class="rowtip">操作</th>
   </tr>
 
 {tpl:loop $userListArr $userList}
   <tr class="hover">
     <td align="center">{tpl:$userList.user_id/}</td>
+    <td align="center">{tpl:$userList.nick_name/}</td>
     <td align="center">{tpl:$userList.sex/}</td>
     <td align="center">{tpl:$userList.auth_state/}</td> 
+    <td align="center"><a href="javascript:;" onclick="UserDelete('{tpl:$userList.user_id/}','{tpl:$userList.nick_name/}')">删除</a> |  <a href="javascript:;" onclick="UserModify('{tpl:$userList.user_id/}','{tpl:$userList.nick_name/}');">修改</a></td>
   </tr>
 {/tpl:loop}
   <tr class="hover">
-      <td colspan="3">{tpl:$page_content/}</td>
+      <td colspan="5">{tpl:$page_content/}</td>
   </tr>
 </table>
 </fieldset>
