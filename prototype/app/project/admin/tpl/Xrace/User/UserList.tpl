@@ -19,6 +19,15 @@ function RaceTypeModify(mid){
 <fieldset><legend>操作</legend>
 [ <a href="javascript:;" id="add_app">添加用户</a> ]
 </fieldset>
+<form action="{tpl:$this.sign/}" name="form" id="form" method="post">
+  <select name="RaceCatalogId" size="1">
+    <option value="0">全部</option>
+    {tpl:loop $RaceCatalogArr $oRaceCatalog}
+    <option value="{tpl:$oRaceCatalog.RaceCatalogId/}" {tpl:if($oRaceCatalog.RaceCatalogId==$RaceCatalogId)}selected="selected"{/tpl:if}>{tpl:$oRaceCatalog.RaceCatalogName/}</option>
+    {/tpl:loop}
+  </select>
+  <input type="submit" name="Submit" value="查询" />
+</form>
 
 <fieldset><legend>用户列表 </legend>
 <table width="99%" align="center" class="table table-bordered table-striped">

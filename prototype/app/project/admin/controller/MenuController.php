@@ -89,7 +89,7 @@ class MenuController extends AbstractController
 	public function insertAction()
 	{		
             //检查权限
-            $PermissionCheck = $this->manager->checkMenuPermission('InsertMenu');
+            $PermissionCheck = $this->manager->checkMenuPermission(0);
             if($PermissionCheck['return'])
             {
                 $name = $this->request->name;

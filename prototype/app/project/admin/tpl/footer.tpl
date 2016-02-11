@@ -75,6 +75,7 @@
     }
     
     function getRightHtml(url,id,type){
+        console.log(url);
         $("#main_content").remove();
         $(".main_content").html('<iframe id="main_content" name="left" frameBorder="0" scrolling="no" onload="IFrameReSize(\'main_content\');" src="'+url+'" width="100%"></iframe>');
         if(id){
