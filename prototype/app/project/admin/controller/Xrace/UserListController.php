@@ -6,13 +6,13 @@
 
 class Xrace_UserListController extends AbstractController
 {
-	/**运动类型列表:SportsTypeList
-	 * 权限限制  ?ctl=xrace/sports&ac=sports.type
+	/**用户列表:UserList
+	 * 权限限制  ?ctl=xrace/user.list
 	 * @var string
 	 */
 	protected $sign = '?ctl=xrace/user.list';
 	/**
-	 * game对象
+	 * user对象
 	 * @var object
 	 */
 	protected $userList;
@@ -22,12 +22,12 @@ class Xrace_UserListController extends AbstractController
 	 * (non-PHPdoc)
 	 * @see AbstractController#init()
 	 */
-        protected $page = 1;
-        protected $pageSize = 100;
+        protected $page = 1;//初始页码
+        protected $pageSize = 10;//初始每页显示个数
         public function init()
 	{
-		parent::init();
-		$this->userList = new Xrace_User();
+            parent::init();
+            $this->userList = new Xrace_User();
 
 	}
 	//用户列表
@@ -37,11 +37,22 @@ class Xrace_UserListController extends AbstractController
             $PermissionCheck = $this->manager->checkMenuPermission(0);
             if($PermissionCheck['return'])
             {
+                $UserId = isset($this->request->UserId)?intval($this->request->UserId):'';
+                $Sex = isset($this->request->Sex)?$this->request->Sex:'';
+                $AuthState = isset($this->request->AuthState)?$this->request->AuthState:'';
+                $SexArr = array('男','女');
+                $AuthStateArr = array('未验证','已验证','验证中');
+                //获得用户表记录数
+                $count = $this->userList->getUserCount();
+                //获得当前页码
                 $page = intval(max($this->request->page,$this->page));
+                //计算偏移值
                 $offset = ($page-1)*$this->pageSize;
-                $userListArr = $this->userList->getUserList($offset,$this->pageSize);
+                //获得当面页的用户列表数据
+                $userListArr = $this->userList->getUserList('*',$UserId,$Sex,$AuthState,$offset,$this->pageSize);
+                //生成分页的显示HTML
                 $page_url = Base_Common::getUrl('','xrace/user.list','index')."&page=~page~";
-                $page_content = Base_Common::multi(count($userListArr), $page_url, $page, $this->pageSize, 10, $maxpage = 100, $prevWord = '上一页', $nextWord = '下一页');
+                $page_content = Base_Common::multi($count, $page_url, $page, $this->pageSize, 10, $maxpage = 100, $prevWord = '上一页', $nextWord = '下一页' ,$style = 'style="float:right"');
                 include $this->tpl('Xrace_User_UserList');
             }
             else
@@ -68,7 +79,7 @@ class Xrace_UserListController extends AbstractController
             }
 	}
 	
-	//数据库插入用户操作
+	//添加用户操作
 	public function userListInsertAction()
 	{
             //检查权限
@@ -90,5 +101,22 @@ class Xrace_UserListController extends AbstractController
             echo json_encode($response);
             return true;
 	}
+        
+        //修改用户界面
+        public function userListModifyAction() {
+            
+        }
+        
+        //修改用户操作
+        public function userListUpdateAction() {
+            
+        }    
+        
+        
+        
+        //删除用户操作
+        public function userListDeleteAction() {
+            
+        }
 
 }

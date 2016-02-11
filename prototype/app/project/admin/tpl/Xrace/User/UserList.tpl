@@ -6,12 +6,12 @@ $(document).ready(function(){
 	});
 });
 
-function RaceTypeDelete(p_id, p_name){
-	deleteAppBox = divBox.confirmBox({content:'是否删除 ' + p_name + '?',ok:function(){location.href = '{tpl:$this.sign/}&ac=user.list.delete&RaceTypeId=';}});
+function UserDelete(){
+	deleteAppBox = divBox.confirmBox({content:'是否删除 ' + p_name + '?',ok:function(){location.href = '{tpl:$this.sign/}&ac=user.list.delete';}});
 }
 
-function RaceTypeModify(mid){
-	modifyRaceTypeBox = divBox.showBox('{tpl:$this.sign/}&ac=user.list.modify&RaceTypeId=' + mid, {title:'修改用户',width:500,height:200});
+function UserModify(){
+	modifyRaceTypeBox = divBox.showBox('{tpl:$this.sign/}&ac=user.list.modify' + mid, {title:'修改用户',width:500,height:200});
 }
 
 </script>
@@ -20,16 +20,23 @@ function RaceTypeModify(mid){
 [ <a href="javascript:;" id="add_app">添加用户</a> ]
 </fieldset>
 <form action="{tpl:$this.sign/}" name="form" id="form" method="post">
-  <select name="RaceCatalogId" size="1">
-    <option value="0">全部</option>
-    {tpl:loop $RaceCatalogArr $oRaceCatalog}
-    <option value="{tpl:$oRaceCatalog.RaceCatalogId/}" {tpl:if($oRaceCatalog.RaceCatalogId==$RaceCatalogId)}selected="selected"{/tpl:if}>{tpl:$oRaceCatalog.RaceCatalogName/}</option>
-    {/tpl:loop}
-  </select>
+  用户ID: <input name="UserId"  type="text" size="1" value="{tpl:$UserId/}"/>
+  性别: <select name="Sex" size="1">
+        <option value="">全部</option>
+        {tpl:loop $SexArr $SexValue}
+        <option value="{tpl:$SexValue/}" {tpl:if($SexValue==$Sex)}selected="selected"{/tpl:if}>{tpl:$SexValue/}</option>
+        {/tpl:loop}
+       </select>
+  认证状态: <select name="AuthState" size="1">
+          <option value="">全部</option>
+        {tpl:loop $AuthStateArr $AuthStateValue}
+        <option value="{tpl:$AuthStateValue/}" {tpl:if($AuthStateValue==$AuthState)}selected="selected"{/tpl:if}>{tpl:$AuthStateValue/}</option>
+        {/tpl:loop}
+        </select>
   <input type="submit" name="Submit" value="查询" />
 </form>
 
-<fieldset><legend>用户列表 </legend>
+<fieldset><legend>用户列表</legend>
 <table width="99%" align="center" class="table table-bordered table-striped">
   <tr>
     <th align="center" class="rowtip">用户分类ID</th>
@@ -45,7 +52,7 @@ function RaceTypeModify(mid){
   </tr>
 {/tpl:loop}
   <tr class="hover">
-      <td align="right" colspan="">{tpl:$page_content/}</td>
+      <td colspan="3">{tpl:$page_content/}</td>
   </tr>
 </table>
 </fieldset>

@@ -301,9 +301,10 @@ EOF;
 	 * @param integer $maxpage 最大页码
 	 * @param string $prevWord 上一页
 	 * @param string $nextWord 下一页
+         * @param string $style 显示位置
 	 * @return string
 	 */
-	public static function multi($count, $urlmod, $page, $pagesize = 20, $size = 10, $maxpage = 0, $prevWord = '&laquo;', $nextWord = '&raquo;')
+	public static function multi($count, $urlmod, $page, $pagesize = 20, $size = 10, $maxpage = 0, $prevWord = '&laquo;', $nextWord = '&raquo;', $style = '')
 	{
 		$multi = '';
 		$holder = '~page~';
@@ -368,7 +369,7 @@ EOF;
 			}
 		}
 
-		return $multi ? '<div class="pages">' . $multi . ' 记录总数：'.$count.' </div>' : '';
+		return $multi ? '<div class="pages" ' . $style . '>' . $multi . ' 记录总数：'.$count.' </div>' : '';
 	}
 
 	/**
