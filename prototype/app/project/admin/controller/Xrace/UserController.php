@@ -132,13 +132,13 @@ class Xrace_UserController extends AbstractController
 		{
 			$SexList = $this->oUser->getSexList();
 			$AuthStatusList = $this->oUser->getAuthStatus();
+			$AuthIdTypesList = $this->oUser->getAuthIdType();
 			$UserId = trim($this->request->UserId);
 			$UserInfo = $this->oUser->getUserInfo($UserId);
 			$UserInfo['sex'] = isset($SexList[$UserInfo['sex']])?$SexList[$UserInfo['sex']]:"保密";
 			$UserInfo['AuthStatus'] = isset($AuthStatusList[$UserInfo['auth_state']])?$AuthStatusList[$UserInfo['auth_state']]:"未知";
 			$UserInfo['thumb'] = urldecode($UserInfo['thumb']);
-			//$UserInfo['thumb'] = "http://admin.xrace.com/upload/RaceCatalogIcon/79228797gw1em2ejx8xktj20w01kw4fe.jpg";
-			//echo urlencode(($UserInfo['thumb'] ));
+			$UserInfo['AuthIdType'] = isset($AuthIdTypesList[strtoupper(trim($UserInfo['id_type']))])?$AuthIdTypesList[strtoupper(trim($UserInfo['id_type']))]:"未知";
 			include $this->tpl('Xrace_User_UserDetail');
 		}
 		else
