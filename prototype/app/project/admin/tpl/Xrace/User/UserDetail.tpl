@@ -4,7 +4,7 @@
 
     <table width="99%" align="center" class="table table-bordered table-striped" widtd="99%">
         <tr class="hover">
-            <th align="center" class="rowtip" rowspan="7" colspan="2"><img src="{tpl:$UserInfo.thumb/}" width='80' height='60'/></th>
+            <th align="center" class="rowtip" rowspan="7" colspan="2"><img src="{tpl:$UserInfo.thumb/}" width='160' height='160'/></th>
         </tr>
         <tr class="hover">
             <th align="center" class="rowtip">用户ID</th>
@@ -24,7 +24,7 @@
         </tr>
         <tr class="hover">
             <th align="center" class="rowtip">实名认证状态</th>
-            <td align="left">{tpl:$UserInfo.auth_state/}</td>
+            <td align="left">{tpl:$UserInfo.AuthStatus/}</td>
         </tr>
         <tr class="hover">
             <th align="center" class="rowtip">微信openId</th>

@@ -9,16 +9,30 @@ class Xrace_User extends Base_Widget
 {
 	//声明所用到的表
 	protected $table = 'user_profile';
+	protected $table_auth = 'user_auth';
+	protected $table_auth_log = 'user_auth_log';
 	protected $sex = array('MALE'=>"男","FEMALE"=>"女");
 	protected $auth_status = array('UNAUTH'=>"未审核","AUTHING"=>"审核中","AUTHED"=>"已审核");
-
+	protected $auth_status_submit = array('UNAUTH'=>"不通过","AUTHED"=>"审核通过");
+	protected $auth_id_type = array('IDCARD'=>"身份证","PASSPORT"=>"护照");
 	public function getSexList()
 	{
 		return $this->sex;
 	}
-	public function getAuthStatus()
+	public function getAuthStatus($type = "display")
 	{
-		return $this->auth_status;
+		if($type=="display")
+		{
+			return $this->auth_status;
+		}
+		else
+		{
+			return $this->auth_status_submit;
+		}
+	}
+	public function getAuthIdType()
+	{
+		return $this->auth_id_type;
 	}
 	/**
 	 * 获取单条记录
@@ -30,6 +44,53 @@ class Xrace_User extends Base_Widget
 	{
 		$UserId = trim($UserId);
 		$table_to_process = Base_Widget::getDbTable($this->table);
+		return $this->db->selectRow($table_to_process, $fields, '`user_id` = ?', $UserId);
+	}
+	/**
+	 * 更新
+	 * @param integer $AppId
+	 * @param array $bind
+	 * @return boolean
+	 */
+	public function updateUserInfo($UserId, array $bind)
+	{
+		$UserId = trim($UserId);
+		$table_to_process = Base_Widget::getDbTable($this->table);
+		return $this->db->update($table_to_process, $bind, '`user_id` = ?', $UserId);
+	}
+	/**
+	 * 更新
+	 * @param integer $AppId
+	 * @param array $bind
+	 * @return boolean
+	 */
+	public function updateUserAuthInfo($UserId, array $bind)
+	{
+		$UserId = trim($UserId);
+		$table_to_process = Base_Widget::getDbTable($this->table_auth);
+		return $this->db->update($table_to_process, $bind, '`user_id` = ?', $UserId);
+	}
+	/**
+	 * 更新
+	 * @param integer $AppId
+	 * @param array $bind
+	 * @return boolean
+	 */
+	public function insertUserAuthLog(array $bind)
+	{
+		$table_to_process = Base_Widget::getDbTable($this->table_auth_log);
+		return $this->db->insert($table_to_process, $bind);
+	}
+	/**
+	 * 获取单条记录
+	 * @param integer $AppId
+	 * @param string $fields
+	 * @return array
+	 */
+	public function getUserAuthInfo($UserId, $fields = '*')
+	{
+		$UserId = trim($UserId);
+		$table_to_process = Base_Widget::getDbTable($this->table_auth);
 		return $this->db->selectRow($table_to_process, $fields, '`user_id` = ?', $UserId);
 	}
 	/**
@@ -85,7 +146,7 @@ class Xrace_User extends Base_Widget
 		return $UserList;
 	}
 	/**
-	 * 获取用户列表
+	 * 获取用户数量
 	 * @param $fields
 	 * @param $params
 	 * @return array
@@ -114,4 +175,34 @@ class Xrace_User extends Base_Widget
 		$sql = "SELECT $fields FROM $table_to_process where 1 ".$where;
 		return $this->db->getOne($sql);
 	}
+	/**
+	 * 获取用户数量
+	 * @param $fields
+	 * @param $params
+	 * @return array
+	 */
+	public function UserAuth($UserId,$UserInfo,$AuthInfo)
+	{
+		$UserAuthInfo = $this->getUserAuthInfo($UserId);
+		$UserAuthInfo['auth_resp'] = $AuthInfo['auth_resp'];
+		$UserAuthInfo['auth_result'] = "ALLOWED";
+		$UserAuthInfo['op_time'] = date("Y-m-d H:i:s",time());
+		$UserAuthInfo['op_uid'] = $AuthInfo['op_uid'];
+		//事务开始
+		$this->db->begin();
+		$UserProfileUpdate = $this->updateUserInfo($UserId,$UserInfo);
+		$UserAuthInfoUpdate = $this->updateUserAuthInfo($UserId,$UserAuthInfo);
+		$UserAuthLogInsert = $this->insertUserAuthLog($UserAuthInfo+array('auth_id'=>rand(111,999)));
+		if($UserProfileUpdate && $UserAuthInfoUpdate && $UserAuthLogInsert)
+		{
+			$this->db->commit();
+			return true;
+		}
+		else
+		{
+			$this->db->rollBack();
+			return false;
+		}
+	}
+
 }

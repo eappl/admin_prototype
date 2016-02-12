@@ -7,6 +7,14 @@
 $table = array();
 
 #管理员
+$table['user_auth']['db'] = 'prototype_global';
+$table['user_auth']['num'] = 1;
+
+#管理员
+$table['user_auth_log']['db'] = 'prototype_global';
+$table['user_auth_log']['num'] = 1;
+
+#管理员
 $table['user_profile']['db'] = 'prototype_global';
 $table['user_profile']['num'] = 1;
 

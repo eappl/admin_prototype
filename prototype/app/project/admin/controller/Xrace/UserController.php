@@ -38,6 +38,8 @@ class Xrace_UserController extends AbstractController
 		{
 			$SexList = $this->oUser->getSexList();
 			$AuthStatusList = $this->oUser->getAuthStatus();
+			$AuthIdTypesList = $this->oUser->getAuthIdType();
+
 			$params['Sex'] = isset($SexList[strtoupper(trim($this->request->Sex))])?substr(strtoupper(trim($this->request->Sex)),0,8):"";
 			$params['Name'] = urldecode(trim($this->request->Name))?substr(urldecode(trim($this->request->Name)),0,8):"";
 			$params['NickName'] = urldecode(trim($this->request->NickName))?substr(urldecode(trim($this->request->NickName)),0,8):"";
@@ -55,7 +57,10 @@ class Xrace_UserController extends AbstractController
 			foreach($UserList['UserList'] as $UserId => $UserInfo)
 			{
 				$UserList['UserList'][$UserId]['sex'] = isset($SexList[$UserInfo['sex']])?$SexList[$UserInfo['sex']]:"保密";
-				$UserList['UserList'][$UserId]['auth_state'] = isset($AuthStatusList[$UserInfo['auth_state']])?$AuthStatusList[$UserInfo['auth_state']]:"未知";
+				$UserList['UserList'][$UserId]['AuthStatus'] = isset($AuthStatusList[$UserInfo['auth_state']])?$AuthStatusList[$UserInfo['auth_state']]:"未知";
+				$UserList['UserList'][$UserId]['AuthStatus'] = isset($AuthIdTypesList[strtoupper(trim($UserInfo['id_type']))])?$UserList['UserList'][$UserId]['AuthStatus']."/".$AuthIdTypesList[strtoupper(trim($UserInfo['id_type']))]:$UserList['UserList'][$UserId]['AuthStatus'];
+				$UserList['UserList'][$UserId]['Birthday'] = is_null($UserInfo['birth_day'])?"未知":$UserInfo['birth_day'];
+
 			}
 			include $this->tpl('Xrace_User_UserList');
 		}
@@ -102,7 +107,7 @@ class Xrace_UserController extends AbstractController
 					$t['name'] = $UserInfo['name'];
 					$t['nick_name'] = $UserInfo['nick_name'];
 					$t['sex'] = isset($SexList[$UserInfo['sex']])?$SexList[$UserInfo['sex']]:"保密";
-					$t['auth_state'] = isset($AuthStatusList[$UserInfo['auth_state']])?$AuthStatusList[$UserInfo['auth_state']]:"未知";
+					$t['AuthStatus'] = isset($AuthStatusList[$UserInfo['auth_state']])?$AuthStatusList[$UserInfo['auth_state']]:"未知";
 
 					$oExcel->addRows(array($t));
 					unset($t);
@@ -130,10 +135,157 @@ class Xrace_UserController extends AbstractController
 			$UserId = trim($this->request->UserId);
 			$UserInfo = $this->oUser->getUserInfo($UserId);
 			$UserInfo['sex'] = isset($SexList[$UserInfo['sex']])?$SexList[$UserInfo['sex']]:"保密";
-			$UserInfo['auth_state'] = isset($AuthStatusList[$UserInfo['auth_state']])?$AuthStatusList[$UserInfo['auth_state']]:"未知";
+			$UserInfo['AuthStatus'] = isset($AuthStatusList[$UserInfo['auth_state']])?$AuthStatusList[$UserInfo['auth_state']]:"未知";
+			$UserInfo['thumb'] = urldecode($UserInfo['thumb']);
 			//$UserInfo['thumb'] = "http://admin.xrace.com/upload/RaceCatalogIcon/79228797gw1em2ejx8xktj20w01kw4fe.jpg";
 			//echo urlencode(($UserInfo['thumb'] ));
 			include $this->tpl('Xrace_User_UserDetail');
+		}
+		else
+		{
+			$home = $this->sign;
+			include $this->tpl('403');
+		}
+	}
+	//用户实名认证信息
+	public function userAuthInfoAction()
+	{
+		//检查权限
+		$PermissionCheck = $this->manager->checkMenuPermission("UserAuth");
+		if($PermissionCheck['return'])
+		{
+			$SexList = $this->oUser->getSexList();
+			$AuthStatusList = $this->oUser->getAuthStatus();
+			$UserId = trim($this->request->UserId);
+			$UserInfo = $this->oUser->getUserInfo($UserId);
+			$UserInfo['thumb'] = urldecode($UserInfo['thumb']);
+			$UserInfo['AuthStatus'] = isset($AuthStatusList[$UserInfo['auth_state']])?$AuthStatusList[$UserInfo['auth_state']]:"未知";
+			$UserInfo['sex'] = isset($SexList[$UserInfo['sex']])?$SexList[$UserInfo['sex']]:"保密";
+			$UserAuthInfo = $this->oUser->getUserAuthInfo($UserId);
+			$UserAuthInfo = $this->oUser->getUserAuthInfo($UserId);
+			$UserAuthInfo['submit_img1'] = urldecode($UserAuthInfo['submit_img1']);
+			$UserAuthInfo['submit_img2'] = urldecode($UserAuthInfo['submit_img2']);
+			include $this->tpl('Xrace_User_UserAuth');
+		}
+		else
+		{
+			$home = $this->sign;
+			include $this->tpl('403');
+		}
+	}
+	//用户实名认证信息
+	public function userAuthSubmitAction()
+	{
+		//检查权限
+		$PermissionCheck = $this->manager->checkMenuPermission("UserAuth");
+		if($PermissionCheck['return'])
+		{
+			$SexList = $this->oUser->getSexList();
+			$AuthStatusList = $this->oUser->getAuthStatus("submit");
+			$AuthIdTypesList = $this->oUser->getAuthIdType();
+			$UserId = trim($this->request->UserId);
+			$UserInfo = $this->oUser->getUserInfo($UserId);
+			$UserInfo['birth_day'] =  is_null($UserInfo['birth_day'])?date("Y-m-d",time()):$UserInfo['birth_day'];
+			$UserInfo['expire_day'] =  is_null($UserInfo['expire_day'])?date("Y-m-d",time()):$UserInfo['expire_day'];
+			$UserAuthInfo = $this->oUser->getUserAuthInfo($UserId);
+			include $this->tpl('Xrace_User_UserAuthSubmit');
+		}
+		else
+		{
+			$home = $this->sign;
+			include $this->tpl('403');
+		}
+	}
+	//用户实名认证信息
+	public function userAuthAction()
+	{
+		//检查权限
+		$PermissionCheck = $this->manager->checkMenuPermission("UserAuth");
+		if($PermissionCheck['return'])
+		{
+			$SexList = $this->oUser->getSexList();
+			$AuthIdTypesList = $this->oUser->getAuthIdType();
+			$AuthStatusList = $this->oUser->getAuthStatus("submit");
+
+			$AuthInfo=$this->request->from('UserId','UserRealName','UserSex','UserAuthStatus','UserAuthIdType','UserAuthIdNo','UserBirthDay','UserAuthReason','UserAuthExpireDay');
+			$UserId = trim($this->request->UserId);
+			$UserInfo['sex'] = isset($SexList[strtoupper(trim($AuthInfo['UserSex']))])?substr(strtoupper(trim($AuthInfo['UserSex'])),0,8):"";
+			$UserInfo['id_type'] = isset($AuthIdTypesList[strtoupper(trim($AuthInfo['UserAuthIdType']))])?substr(strtoupper(trim($AuthInfo['UserAuthIdType'])),0,8):"";
+			$UserInfo['auth_state'] = isset($AuthStatusList[strtoupper(trim($AuthInfo['UserAuthStatus']))])?substr(strtoupper(trim($AuthInfo['UserAuthStatus'])),0,8):"";
+			$UserInfo['id_number'] = substr(strtoupper(trim($AuthInfo['UserAuthIdNo'])),0,30);
+			$UserInfo['birth_day'] = $AuthInfo['UserBirthDay'];
+			$UserInfo['expire_day'] = $AuthInfo['UserAuthExpireDay'];
+			$UserAuthInfo['auth_resp'] = substr((trim(urldecode($AuthInfo['UserAuthReason']))),0,30);
+			$UserAuthInfo['op_uid'] = $this->manager->id;
+			if($UserInfo['sex']=="")
+			{
+				$response = array('errno' => 2);
+			}
+			elseif($UserInfo['id_type']=="")
+			{
+				$response = array('errno' => 3);
+			}
+			elseif($UserInfo['auth_state']=="")
+			{
+				$response = array('errno' => 4);
+			}
+			elseif($UserInfo['auth_state'] == "AUTHED" && $UserInfo['id_number']=="" )
+			{
+				$response = array('errno' => 5);
+			}
+			elseif($UserInfo['auth_state'] == "AUTHED" && strtotime($UserInfo['birth_day']) < time())
+			{
+				$response = array('errno' => 6);
+			}
+			elseif($UserInfo['auth_state'] == "AUTHED" && strtotime($UserInfo['expire_day']) < time())
+			{
+				$response = array('errno' => 7);
+			}
+			elseif($UserInfo['auth_state'] == "UNAUTH" && $UserAuthInfo['auth_resp'] == "")
+			{
+				$response = array('errno' => 8);
+			}
+			else
+			{
+				$User = $this->oUser->getUserInfo($UserId);
+				if(!isset($User['user_id']))
+				{
+					$response = array('errno' => 1);
+				}
+				elseif($User['auth_state'] == "AUTHED")
+				{
+					$response = array('errno' => 10);
+				}
+				else
+				{
+					if($UserInfo['auth_state'] == "AUTHED")
+					{
+						$Auth = $this->oUser->UserAuth($UserId,$UserInfo,$UserAuthInfo);
+						$response = $Auth ? array('errno' => 0) : array('errno' => 9);
+					}
+					elseif($UserInfo['auth_state'] == "UNAUTH")
+					{
+						$Auth = $this->oUser->UserUnAuth($UserId,$UserInfo,$UserAuthInfo);
+						$response = $Auth ? array('errno' => 0) : array('errno' => 9);
+
+					}
+
+				}
+				die();
+
+			}
+			//elseif(if($UserInfo['id_type']==""))
+			//elseif(intval($bind['RaceCatalogId'])<=0)
+			{
+			//	$response = array('errno' => 2);
+			}
+			//print_r($UserInfo);
+			//print_r($response);
+			//die();
+
+			echo json_encode($response);
+			return true;
+
 		}
 		else
 		{

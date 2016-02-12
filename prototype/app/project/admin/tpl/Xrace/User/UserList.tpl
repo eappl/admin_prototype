@@ -3,6 +3,9 @@
     function userDetail(uid){
         userDetailBox = divBox.showBox('{tpl:$this.sign/}&ac=user.detail&UserId=' + uid, {title:'用户详情',width:600,height:400});
     }
+    function userAuth(uid){
+        userAuthBox = divBox.showBox('{tpl:$this.sign/}&ac=user.auth.info&UserId=' + uid, {title:'实名认证',width:600,height:400});
+    }
 </script>
 
 <fieldset><legend>操作</legend>
@@ -34,6 +37,7 @@
         <th align="center" class="rowtip">联系电话</th>
         <th align="center" class="rowtip">性别</th>
         <th align="center" class="rowtip">实名认证状态</th>
+        <th align="center" class="rowtip">生日</th>
         <th align="center" class="rowtip">操作</th>
       </tr>
     {tpl:loop $UserList.UserList $oUserInfo}
@@ -43,8 +47,9 @@
           <td align="center">{tpl:$oUserInfo.wx_open_id/}</td>
         <td align="center">{tpl:$oUserInfo.phone/}</td>
         <td align="center">{tpl:$oUserInfo.sex/}</td>
-          <td align="center">{tpl:$oUserInfo.auth_state/}</td>
-          <td align="center"><a  href="javascript:;" onclick="userDetail('{tpl:$oUserInfo.user_id/}')">详细</a></td>
+          <td align="center">{tpl:$oUserInfo.AuthStatus/}</td>
+          <td align="center">{tpl:$oUserInfo.Birthday/}</td>
+          <td align="center"><a  href="javascript:;" onclick="userDetail('{tpl:$oUserInfo.user_id/}')">详细</a>{tpl:if($oUserInfo.auth_state=="AUTHING")} | <a  href="javascript:;" onclick="userAuth('{tpl:$oUserInfo.user_id/}')">审核</a>{/tpl:if}</td>
       </tr>
     {/tpl:loop}
     <tr><th colspan="10" align="center" class="rowtip">{tpl:$page_content/}</th></tr>
