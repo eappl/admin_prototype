@@ -534,7 +534,15 @@ EOF;
 			{
 				if($value)
 				{
-					$pArr[] = $key."=".$value;
+					if(!in_array($key,array('ctl','ac')))
+					{
+						$pArr[] = $key . "=" . urlencode($value);
+
+					}
+					else
+					{
+						$pArr[] = $key . "=" . ($value);
+					}
 				}
 			}
 			if(!empty($pArr))
