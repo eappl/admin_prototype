@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f14c69c2-85b7-4678-ade1-5137e4f25954" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserDetail.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prototype/app/model/Xrace/User.php" afterPath="$PROJECT_DIR$/prototype/app/model/Xrace/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/UserController.php" afterPath="$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserList.tpl" afterPath="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserList.tpl" />
     </list>
     <ignored path="admin_prototype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,18 +27,60 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.48">
-              <caret line="43" column="165" selection-start-line="43" selection-start-column="165" selection-end-line="43" selection-end-column="165" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="140" column="164" selection-start-line="140" selection-start-column="164" selection-end-line="140" selection-end-column="164" />
+              <folding>
+                <element signature="e#6#123#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RaceCatalogController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/RaceCatalogController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="142" column="12" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDetail.tpl" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserAuthSubmit.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserAuthSubmit.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="85" column="50" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RaceStageModify.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/Race/RaceStageModify.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="24" selection-end-column="98" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDetail.tpl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserDetail.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.5">
-              <caret line="6" column="125" selection-start-line="6" selection-start-column="125" selection-end-line="6" selection-end-column="125" />
+            <state vertical-scroll-proportion="0.16974169">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserAuth.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserAuth.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="116" selection-start-line="3" selection-start-column="116" selection-end-line="3" selection-end-column="116" />
               <folding />
             </state>
           </provider>
@@ -52,52 +89,36 @@
       <file leaf-file-name="UserList.tpl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserList.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.5">
-              <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Db.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prototype/lib/Base/Db.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2405064">
-              <caret line="385" column="56" selection-start-line="385" selection-start-column="53" selection-end-line="385" selection-end-column="56" />
-              <folding>
-                <marker date="1454599315115" expanded="true" signature="4671:4704" placeholder="SELECT ${$fi... ${$table}" />
-                <marker date="1454599315115" expanded="true" signature="6290:6322" placeholder="SELECT ${$fi... ${$table}" />
-                <marker date="1454599315115" expanded="true" signature="7011:7058" placeholder="SELECT ${$fi... ${$table}" />
-                <marker date="1454599315115" expanded="true" signature="7489:7524" placeholder="DELETE FROM " />
-                <marker date="1454599315115" expanded="true" signature="12388:12410" placeholder="UPDATE `${{$... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prototype/app/model/Xrace/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44186047">
-              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding>
-                <marker date="1455279626808" expanded="true" signature="1968:2022" placeholder="SELECT ${$fi... ${$table_to_process}" />
-                <marker date="1455279626808" expanded="true" signature="1968:2025" placeholder="SELECT ${$fi... ${$table_to_process}" />
-                <marker date="1455279626808" expanded="true" signature="1968:2026" placeholder="SELECT ${$fi... ${$table_to_process}" />
-                <marker date="1455279626808" expanded="true" signature="1968:2033" placeholder="SELECT ${$fi... ${$table_to_process}" />
-                <marker date="1455279626808" expanded="true" signature="1968:2036" placeholder="SELECT ${$fi... ${$table_to_process}" />
-                <marker date="1455279626808" expanded="true" signature="3262:3308" placeholder="SELECT * FRO... ${$table_to_process}" />
-                <marker date="1455279626808" expanded="true" signature="3262:3316" placeholder="SELECT * FRO... ${$table_to_process}" />
+                <marker date="1455290250039" expanded="true" signature="3596:3650" placeholder="SELECT ${$fi... ${$table_to_process}" />
+                <marker date="1455290250039" expanded="true" signature="3596:3653" placeholder="SELECT ${$fi... ${$table_to_process}" />
+                <marker date="1455290250039" expanded="true" signature="3596:3654" placeholder="SELECT ${$fi... ${$table_to_process}" />
+                <marker date="1455290250039" expanded="true" signature="3596:3661" placeholder="SELECT ${$fi... ${$table_to_process}" />
+                <marker date="1455290250039" expanded="true" signature="3596:3664" placeholder="SELECT ${$fi... ${$table_to_process}" />
+                <marker date="1455290250039" expanded="true" signature="4890:4936" placeholder="SELECT * FRO... ${$table_to_process}" />
+                <marker date="1455290250039" expanded="true" signature="4890:4944" placeholder="SELECT * FRO... ${$table_to_process}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Widget.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prototype/lib/Base/Widget.php">
+      <file leaf-file-name="table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/etc/table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2405064">
-              <caret line="85" column="28" selection-start-line="85" selection-start-column="26" selection-end-line="85" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -106,8 +127,8 @@
       <file leaf-file-name="Sports.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prototype/app/model/Xrace/Sports.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="12.0">
-              <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="66" column="26" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="26" />
               <folding>
                 <marker date="1454599313960" expanded="true" signature="440:511" placeholder="SELECT ${$fi... ${$table_to_process}" />
               </folding>
@@ -135,14 +156,19 @@
         <option value="$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/SportsController.php" />
         <option value="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/Race/RaceStageGroupDetail.tpl" />
         <option value="$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/RaceStageController.php" />
-        <option value="$PROJECT_DIR$/prototype/app/project/admin/etc/table.php" />
         <option value="$PROJECT_DIR$/prototype/lib/Base/Common.php" />
         <option value="$PROJECT_DIR$/prototype/app/model/Widget/Manager.php" />
         <option value="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/Sports/SportsTypeList.tpl" />
-        <option value="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserDetail.tpl" />
-        <option value="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserList.tpl" />
-        <option value="$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/UserController.php" />
+        <option value="$PROJECT_DIR$/prototype/app/project/admin/tpl/Menu/purview/modifybygroup.tpl" />
+        <option value="$PROJECT_DIR$/prototype/app/project/admin/controller/Menu/PermissionController.php" />
+        <option value="$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/RaceCatalogController.php" />
+        <option value="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserAuthSubmit.tpl" />
+        <option value="$PROJECT_DIR$/prototype/app/project/admin/etc/table.php" />
         <option value="$PROJECT_DIR$/prototype/app/model/Xrace/User.php" />
+        <option value="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserList.tpl" />
+        <option value="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserAuth.tpl" />
+        <option value="$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserDetail.tpl" />
+        <option value="$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/UserController.php" />
       </list>
     </option>
   </component>
@@ -187,7 +213,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -338,6 +363,108 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Xrace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="User" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Xrace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="etc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -424,8 +551,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="etc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -515,41 +665,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Index/index.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/etc/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/etc/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Index/index.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13059251">
-          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Index/home.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/contentFooter.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -669,13 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/Race/RaceStageModify.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.095941">
-          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/controller/ManagerController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.9852397">
@@ -690,13 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/Race/RaceGroupModify.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20295203">
-          <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/manager/add.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -708,7 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="47" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,7 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="105" column="12" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2693727">
           <caret line="66" column="49" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -746,7 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43173432">
           <caret line="38" column="102" selection-start-line="38" selection-start-column="73" selection-end-line="38" selection-end-column="102" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -754,7 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.099631">
           <caret line="3" column="42" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -762,12 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.53136533">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <marker date="1454743154441" expanded="true" signature="788:860" placeholder="SELECT ${$fi... ${$table_to_process}" />
-            <marker date="1454743154441" expanded="true" signature="2889:2998" placeholder="SELECT ${$fi... ${$table_to_process}" />
-            <marker date="1454743154441" expanded="true" signature="4903:5007" placeholder="SELECT ${$fi... ${$table_to_process}" />
-            <marker date="1454743154441" expanded="true" signature="6656:6725" placeholder="SELECT ${$fi... ${$table_to_process}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -775,23 +865,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.199262">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="29" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/etc/table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23247233">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/Sports/SportsTypeModify.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="44" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,7 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.199262">
           <caret line="6" column="53" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -815,31 +887,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38130382">
           <caret line="424" column="8" selection-start-line="424" selection-start-column="8" selection-end-line="424" selection-end-column="8" />
-          <folding>
-            <marker date="1455266852801" expanded="true" signature="6674:6723" placeholder="SELECT ${$fi... $" />
-            <marker date="1455266852801" expanded="true" signature="6855:6906" placeholder="SELECT ${$fi... $" />
-            <marker date="1455266852801" expanded="true" signature="7704:7745" placeholder="SELECT ${$fi... $" />
-            <marker date="1455266852801" expanded="true" signature="7901:7949" placeholder="SELECT ${$fi... $" />
-            <marker date="1455266852801" expanded="true" signature="8075:8125" placeholder="SELECT ${$fi... $" />
-            <marker date="1455266852801" expanded="true" signature="8328:8348" placeholder="SELECT ${$fi... $" />
-            <marker date="1455266852801" expanded="true" signature="8555:8605" placeholder="SELECT `id` ${{$this-&gt;table}}" />
-            <marker date="1455266852801" expanded="true" signature="13981:14030" placeholder="SELECT ${$fi... $" />
-            <marker date="1455266852801" expanded="true" signature="14141:14192" placeholder="SELECT ${$fi... $" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/lib/Base/Db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2405064">
-          <caret line="385" column="56" selection-start-line="385" selection-start-column="53" selection-end-line="385" selection-end-column="56" />
-          <folding>
-            <marker date="1454599315115" expanded="true" signature="4671:4704" placeholder="SELECT ${$fi... ${$table}" />
-            <marker date="1454599315115" expanded="true" signature="6290:6322" placeholder="SELECT ${$fi... ${$table}" />
-            <marker date="1454599315115" expanded="true" signature="7011:7058" placeholder="SELECT ${$fi... ${$table}" />
-            <marker date="1454599315115" expanded="true" signature="7489:7524" placeholder="DELETE FROM " />
-            <marker date="1454599315115" expanded="true" signature="12388:12410" placeholder="UPDATE `${{$... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -847,7 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33246753">
           <caret line="222" column="23" selection-start-line="222" selection-start-column="18" selection-end-line="222" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -855,15 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13284133">
           <caret line="4" column="100" selection-start-line="4" selection-start-column="100" selection-end-line="4" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserList.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.5">
-          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -871,7 +908,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1623616">
           <caret line="35" column="194" selection-start-line="35" selection-start-column="92" selection-end-line="35" selection-end-column="194" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/lib/Base/Db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2405064">
+          <caret line="385" column="56" selection-start-line="385" selection-start-column="53" selection-end-line="385" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -879,49 +922,126 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.2405064">
           <caret line="85" column="28" selection-start-line="85" selection-start-column="26" selection-end-line="85" selection-end-column="28" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/controller/Menu/PermissionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3505535">
+          <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Menu/purview/modifybygroup.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59778595">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/Race/RaceGroupModify.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3321033">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/Sports/SportsTypeModify.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23247233">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="147" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/prototype/app/model/Xrace/Sports.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.0">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="26" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="26" />
           <folding>
             <marker date="1454599313960" expanded="true" signature="440:511" placeholder="SELECT ${$fi... ${$table_to_process}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserDetail.tpl">
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/etc/table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5">
-          <caret line="6" column="125" selection-start-line="6" selection-start-column="125" selection-end-line="6" selection-end-column="125" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.48">
-          <caret line="43" column="165" selection-start-line="43" selection-start-column="165" selection-end-line="43" selection-end-column="165" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/prototype/app/model/Xrace/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44186047">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
-            <marker date="1455279626808" expanded="true" signature="1968:2022" placeholder="SELECT ${$fi... ${$table_to_process}" />
-            <marker date="1455279626808" expanded="true" signature="1968:2025" placeholder="SELECT ${$fi... ${$table_to_process}" />
-            <marker date="1455279626808" expanded="true" signature="1968:2026" placeholder="SELECT ${$fi... ${$table_to_process}" />
-            <marker date="1455279626808" expanded="true" signature="1968:2033" placeholder="SELECT ${$fi... ${$table_to_process}" />
-            <marker date="1455279626808" expanded="true" signature="1968:2036" placeholder="SELECT ${$fi... ${$table_to_process}" />
-            <marker date="1455279626808" expanded="true" signature="3262:3308" placeholder="SELECT * FRO... ${$table_to_process}" />
-            <marker date="1455279626808" expanded="true" signature="3262:3316" placeholder="SELECT * FRO... ${$table_to_process}" />
+            <marker date="1455290250039" expanded="true" signature="3596:3650" placeholder="SELECT ${$fi... ${$table_to_process}" />
+            <marker date="1455290250039" expanded="true" signature="3596:3653" placeholder="SELECT ${$fi... ${$table_to_process}" />
+            <marker date="1455290250039" expanded="true" signature="3596:3654" placeholder="SELECT ${$fi... ${$table_to_process}" />
+            <marker date="1455290250039" expanded="true" signature="3596:3661" placeholder="SELECT ${$fi... ${$table_to_process}" />
+            <marker date="1455290250039" expanded="true" signature="3596:3664" placeholder="SELECT ${$fi... ${$table_to_process}" />
+            <marker date="1455290250039" expanded="true" signature="4890:4936" placeholder="SELECT * FRO... ${$table_to_process}" />
+            <marker date="1455290250039" expanded="true" signature="4890:4944" placeholder="SELECT * FRO... ${$table_to_process}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserList.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="140" column="164" selection-start-line="140" selection-start-column="164" selection-end-line="140" selection-end-column="164" />
+          <folding>
+            <element signature="e#6#123#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserAuth.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="116" selection-start-line="3" selection-start-column="116" selection-end-line="3" selection-end-column="116" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/Race/RaceStageModify.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="24" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserAuthSubmit.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="50" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/controller/Xrace/RaceCatalogController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="142" column="12" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prototype/app/project/admin/tpl/Xrace/User/UserDetail.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16974169">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
