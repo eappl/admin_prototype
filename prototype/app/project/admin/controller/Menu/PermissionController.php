@@ -109,7 +109,7 @@ class Menu_PermissionController extends AbstractController
         $Menu = new Widget_Menu();
         
         $ChildMenu = $Menu->getPermissionChildMenu($parentId);
-		if(count($ChildMenu['menu_list']))
+		if(isset($ChildMenu['menu_list']) && count($ChildMenu['menu_list']))
 		{
             foreach($ChildMenu['menu_list'] as $key=>$val)
 			{

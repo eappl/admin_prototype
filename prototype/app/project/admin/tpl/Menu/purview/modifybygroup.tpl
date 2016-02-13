@@ -11,10 +11,12 @@
 <tr class="hover">
 <td><label class="checkbox">{tpl:$row.prefix/}{tpl:$row.name/}</label></td>
 <td>
-{tpl:loop $row.permission_detail $p $p_info}
-<p>
-<input type="checkbox"  name="permission[{tpl:$row.menu_id/}][{tpl:$p/}]" value="1" {tpl:if($p_info.selected == 1)}checked{/tpl:if} /> {tpl:$p_info.permission_name/} 
-{/tpl:loop}
+    {tpl:if(isset($row.permission_detail))}
+    {tpl:loop $row.permission_detail $p $p_info}
+    <p>
+    <input type="checkbox"  name="permission[{tpl:$row.menu_id/}][{tpl:$p/}]" value="1" {tpl:if($p_info.selected == 1)}checked{/tpl:if} /> {tpl:$p_info.permission_name/}
+    {/tpl:loop}
+    {/tpl:if}
 </td>
 </tr>
 {/tpl:loop}

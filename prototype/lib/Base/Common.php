@@ -534,7 +534,15 @@ EOF;
 			{
 				if($value)
 				{
-					$pArr[] = $key."=".$value;
+					if(!in_array($key,array('ctl','ac')))
+					{
+						$pArr[] = $key . "=" . urlencode($value);
+
+					}
+					else
+					{
+						$pArr[] = $key . "=" . ($value);
+					}
 				}
 			}
 			if(!empty($pArr))
@@ -1009,6 +1017,17 @@ EOF;
 		mt_srand((double) microtime() * 1000000);
 
 		return date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+	}
+	/**
+	 * 向数组中添加一个元素
+	 * @return  string
+	 */
+	function array_insert($array,$value,$position=0)
+	{
+		$fore=($position==0)?array():array_splice($array,0,$position);
+		$fore[]=$value;
+		$ret=array_merge($fore,$array);
+		return $ret;
 	}
 
 }

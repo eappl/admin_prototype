@@ -7,6 +7,18 @@
 $table = array();
 
 #管理员
+$table['user_auth']['db'] = 'prototype_global';
+$table['user_auth']['num'] = 1;
+
+#管理员
+$table['user_auth_log']['db'] = 'prototype_global';
+$table['user_auth_log']['num'] = 1;
+
+#管理员
+$table['user_profile']['db'] = 'prototype_global';
+$table['user_profile']['num'] = 1;
+
+#管理员
 $table['config_sports_type']['db'] = 'prototype_global';
 $table['config_sports_type']['num'] = 1;
 
@@ -21,6 +33,10 @@ $table['config_race_type']['num'] = 1;
 #管理员
 $table['config_race_stage']['db'] = 'prototype_global';
 $table['config_race_stage']['num'] = 1;
+
+#管理员
+$table['config_race_stage_group']['db'] = 'prototype_global';
+$table['config_race_stage_group']['num'] = 1;
 
 #管理员
 $table['config_race_group']['db'] = 'prototype_global';
