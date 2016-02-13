@@ -56,9 +56,10 @@ class Xrace_UserController extends AbstractController
 			$page_content =  base_common::multi($UserList['UserCount'], $page_url, $params['Page'], $params['PageSize'], 10, $maxpage = 100, $prevWord = '上一页', $nextWord = '下一页');
 			foreach($UserList['UserList'] as $UserId => $UserInfo)
 			{
+				echo $UserInfo['auth_state']."<br>";
 				$UserList['UserList'][$UserId]['sex'] = isset($SexList[$UserInfo['sex']])?$SexList[$UserInfo['sex']]:"保密";
 				$UserList['UserList'][$UserId]['AuthStatus'] = isset($AuthStatusList[$UserInfo['auth_state']])?$AuthStatusList[$UserInfo['auth_state']]:"未知";
-				$UserList['UserList'][$UserId]['AuthStatus'] = isset($AuthIdTypesList[strtoupper(trim($UserInfo['id_type']))])?$UserList['UserList'][$UserId]['AuthStatus']."/".$AuthIdTypesList[strtoupper(trim($UserInfo['id_type']))]:$UserList['UserList'][$UserId]['AuthStatus'];
+				$UserList['UserList'][$UserId]['AuthStatus'] = ($UserInfo['auth_state'] == "AUTHED" && isset($AuthIdTypesList[strtoupper(trim($UserInfo['id_type']))]))?$UserList['UserList'][$UserId]['AuthStatus']."/".$AuthIdTypesList[strtoupper(trim($UserInfo['id_type']))]:$UserList['UserList'][$UserId]['AuthStatus'];
 				$UserList['UserList'][$UserId]['Birthday'] = is_null($UserInfo['birth_day'])?"未知":$UserInfo['birth_day'];
 
 			}
@@ -199,10 +200,12 @@ class Xrace_UserController extends AbstractController
 	//用户实名认证信息
 	public function userAuthAction()
 	{
+		echo "HEre";
 		//检查权限
 		$PermissionCheck = $this->manager->checkMenuPermission("UserAuth");
 		if($PermissionCheck['return'])
 		{
+			echo "here";
 			$SexList = $this->oUser->getSexList();
 			$AuthIdTypesList = $this->oUser->getAuthIdType();
 			$AuthStatusList = $this->oUser->getAuthStatus("submit");
@@ -260,18 +263,20 @@ class Xrace_UserController extends AbstractController
 				{
 					if($UserInfo['auth_state'] == "AUTHED")
 					{
+						echo "2";
 						$Auth = $this->oUser->UserAuth($UserId,$UserInfo,$UserAuthInfo);
 						$response = $Auth ? array('errno' => 0) : array('errno' => 9);
 					}
 					elseif($UserInfo['auth_state'] == "UNAUTH")
 					{
-						$Auth = $this->oUser->UserUnAuth($UserId,$UserInfo,$UserAuthInfo);
+						echo "1";
+						$UInfo = array('auth_state',$UserInfo['auth_state']);
+						$Auth = $this->oUser->UserUnAuth($UserId,$UInfo,$UserAuthInfo);
 						$response = $Auth ? array('errno' => 0) : array('errno' => 9);
 
 					}
 
 				}
-				die();
 
 			}
 			//elseif(if($UserInfo['id_type']==""))
