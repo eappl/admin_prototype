@@ -24,6 +24,7 @@ class Xrace_UserListController extends AbstractController
 	 */
         protected $page = 1;//初始页码
         protected $pageSize = 2;//初始每页显示个数
+        protected $sheetSize = 100;//每个表格存储个数
         public function init()
 	{
             parent::init();
@@ -170,8 +171,6 @@ class Xrace_UserListController extends AbstractController
             
         }    
         
-        
-        
         //删除用户操作
         public function userListDeleteAction() {
             //检查权限
@@ -186,6 +185,35 @@ class Xrace_UserListController extends AbstractController
                 $home = $this->sign;
                 include $this->tpl('403');
             }		
+        }
+        
+        public function userExportAction() {
+            $UserId = !empty($this->request->UserId)?intval($this->request->UserId):'';
+            $Sex = isset($this->request->Sex)?$this->request->Sex:'';
+            $AuthState = isset($this->request->AuthState)?$this->request->AuthState:'';
+            //获得用户表记录数
+            $count = $this->userList->getUserCount($UserId,$Sex,$AuthState);
+            //获得当面页的用户列表数据
+            $userListArr = $this->userList->getUserList($UserId,$Sex,$AuthState,0,1000);
+            $FileName='用户列表表格';
+            $oExcel = new Third_Excel();
+            $title = array();
+            $oExcel->download($FileName)->addSheet('用户列表');
+            foreach ($userListArr as $userListNum => $userList) {
+                foreach ($userList as $userListKey => $userListValue) {
+                    if($userListNum == 0) {
+                        $title[$userListKey] = $userListKey;  
+                    }
+                    $t[$userListKey] = $userListValue[$userListKey];
+                }
+                if($userListNum == 0) {
+                    $oExcel->addRows(array($title));
+                }
+                $oExcel->addRows(array($t));	
+                unset($t);
+            }
+            //结束excel
+            $oExcel->closeSheet()->close();	
         }
 
 }
