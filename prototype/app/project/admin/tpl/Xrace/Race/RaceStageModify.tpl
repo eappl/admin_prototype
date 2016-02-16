@@ -19,7 +19,7 @@
 		</select></td>
 </tr>
 	<tr>
-		<th><label >开停结止时间</label></th>
+		<th><label >开始结止时间</label></th>
 		<td>
 			<input type="text" name="StageStartDate" value="{tpl:$oRaceStage.StageStartDate/}" class="input-medium"
 				   onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd'})" >

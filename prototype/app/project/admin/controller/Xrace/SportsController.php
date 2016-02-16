@@ -26,7 +26,7 @@ class Xrace_SportsController extends AbstractController
 	public function init()
 	{
 		parent::init();
-		$this->oSportsType = new Xrace_Sports();
+		$this->oSports = new Xrace_Sports();
 
 	}
 	//任务配置列表页面
@@ -36,7 +36,7 @@ class Xrace_SportsController extends AbstractController
 		$PermissionCheck = $this->manager->checkMenuPermission(0);
 		if($PermissionCheck['return'])
 		{
-			$SportTypeArr = $this->oSportsType->getAllSportsTypeList();
+			$SportTypeArr = $this->oSports->getAllSportsTypeList();
 			include $this->tpl('Xrace_Sports_SportsTypeList');
 		}
 		else
@@ -52,7 +52,7 @@ class Xrace_SportsController extends AbstractController
 		$PermissionCheck = $this->manager->checkMenuPermission("SportsTypeInsert");
 		if($PermissionCheck['return'])
 		{
-			$maxParams = $this->oSportsType->getMaxParmas();
+			$maxParams = $this->oSports->getMaxParmas();
 			for($i = 1;$i<=$maxParams;$i++)
 			{
 				$oSportsType['comment']['params'][$i] = array('param'=>'','paramName'=>'');
@@ -77,7 +77,7 @@ class Xrace_SportsController extends AbstractController
 		}
 		else
 		{
-			$maxParams = $this->oSportsType->getMaxParmas();
+			$maxParams = $this->oSports->getMaxParmas();
 			for($i = 1;$i<=$maxParams;$i++)
 			{
 				if(!isset($bind['ParamsInfo'][$i]))
@@ -88,7 +88,7 @@ class Xrace_SportsController extends AbstractController
 			$bind['comment']['params'] = $bind['ParamsInfo'];
 			unset($bind['ParamsInfo']);
 			$bind['comment'] = json_encode($bind['comment']);
-			$res = $this->oSportsType->insertSportsType($bind);
+			$res = $this->oSports->insertSportsType($bind);
 			$response = $res ? array('errno' => 0) : array('errno' => 9);
 		}
 		echo json_encode($response);
@@ -103,9 +103,9 @@ class Xrace_SportsController extends AbstractController
 		if($PermissionCheck['return'])
 		{
 			$sportsTypeId = intval($this->request->sportsTypeId);
-			$oSportsType = $this->oSportsType->getSportsType($sportsTypeId,'*');
+			$oSportsType = $this->oSports->getSportsType($sportsTypeId,'*');
 			$oSportsType['comment'] = json_decode($oSportsType['comment'],true);
-			$maxParams = $this->oSportsType->getMaxParmas();
+			$maxParams = $this->oSports->getMaxParmas();
 			if(isset($oSportsType['comment']['params']) && is_array($oSportsType['comment']['params']))
 			{
 				for($i = 1;$i<=$maxParams;$i++)
@@ -142,9 +142,9 @@ class Xrace_SportsController extends AbstractController
 		}
 		else
 		{
-			$oSportsType = $this->oSportsType->getSportsType($bind['SportsTypeId'],'*');
+			$oSportsType = $this->oSports->getSportsType($bind['SportsTypeId'],'*');
 			$bind['comment'] = json_decode($oSportsType['comment'],true);
-			$maxParams = $this->oSportsType->getMaxParmas();
+			$maxParams = $this->oSports->getMaxParmas();
 			for($i = 1;$i<=$maxParams;$i++)
 			{
 				if(!isset($bind['ParamsInfo'][$i]))
@@ -159,7 +159,7 @@ class Xrace_SportsController extends AbstractController
 			$bind['comment']['params'] = $bind['ParamsInfo'];
 			unset($bind['ParamsInfo']);
 			$bind['comment'] = json_encode($bind['comment']);
-			$res = $this->oSportsType->updateSportsType($bind['SportsTypeId'],$bind);
+			$res = $this->oSports->updateSportsType($bind['SportsTypeId'],$bind);
 			$response = $res ? array('errno' => 0) : array('errno' => 9);
 		}
 		echo json_encode($response);
@@ -174,7 +174,7 @@ class Xrace_SportsController extends AbstractController
 		if($PermissionCheck['return'])
 		{
 			$sportsTypeId = trim($this->request->sportsTypeId);
-			$this->oSportsType->deleteSportsType($sportsTypeId);
+			$this->oSports->deleteSportsType($sportsTypeId);
 			$this->response->goBack();
 		}
 		else
